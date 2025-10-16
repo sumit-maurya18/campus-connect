@@ -42,7 +42,7 @@ const internshipsData = [
 const Hackathons = () => {
   return (
     // Max width container for the whole section
-    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white"> 
+    <section id='hackathon-section' className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-100 pt-20"> 
       
       {/* Header: Title and Explore More Link */}
       <div className="max-w-7xl mx-auto flex justify-between items-center mb-10">

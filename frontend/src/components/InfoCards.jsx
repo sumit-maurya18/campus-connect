@@ -1,4 +1,4 @@
-// components/InfoCards.jsx
+//InfoCards.jsx
 
 
 import React from 'react';

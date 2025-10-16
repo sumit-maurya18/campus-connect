@@ -4,11 +4,11 @@ import React from 'react';
 import Image from 'next/image'; // Recommended for optimized images in Next.js
 
 // Replace '/images/campus-background.jpg' with the actual path to your image
-const BACKGROUND_IMAGE_SRC = '/univ.jpg'; 
+const BACKGROUND_IMAGE_SRC = '/images/univ.jpg'; 
 
 const Hero = () => {
   return (
-    <section className="relative w-full min-h-[400px] md:min-h-[500px] flex items-center justify-center overflow-hidden">
+    <section className="relative pt-10 w-full min-h-[400px] md:min-h-[500px] flex items-center justify-center overflow-hidden z-0">
       
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">

@@ -6,10 +6,12 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const links = [
   { name: 'Home', path: '/' },
-  { name: 'Internships', path: '/internships' },
-  { name: 'Hackathons', path: '/hackathons' },
-  { name: 'Jobs', path: '/jobs' },
-  { name: 'About', path: '/about' },
+  { name: 'Internships', path: '#internship-section' },
+  { name: 'Hackathons', path: '#hackathon-section' },
+  { name: 'Jobs', path: '#full-time-section' },
+  {name: 'Learning', path: '#learning-section'},
+  { name: 'About', path: '#about-us-section' }
+  
 ];
 
 const Navbar = () => {
@@ -21,7 +23,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-100 p-5 fixed w-full top-0 left-0 shadow-md z-10">
+    <nav className="bg-gray-100/55 backdrop-blur-md p-5 fixed w-full top-0 left-0 shadow-md z-1">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         
         {/* Logo/Brand Name */}
