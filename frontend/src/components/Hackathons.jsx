@@ -1,4 +1,4 @@
-// components/Hackathons.jsx
+//Hackathons.jsx
 
 import React from 'react';
 import Link from 'next/link';
@@ -51,7 +51,7 @@ const Hackathons = () => {
         </h2>
         {/* The new "Explore More" link */}
         <Link 
-          href="/internships" 
+          href="/hackathons" 
           className="text-lg font-semibold text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out"
         >
           Explore More &rarr; 
