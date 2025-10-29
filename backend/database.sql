@@ -19,5 +19,5 @@ CREATE TABLE job (
     deadline DATE,
     tags JSONB,
     status opportunity_status DEFAULT 'active',
-    url varchar(500) not null --required
+    url varchar(500) not null, --required
 );
