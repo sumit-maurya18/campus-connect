@@ -66,6 +66,37 @@ router.post("/job", async (req, res) => {
   }
 });
 
+
+router.post("/hackathon_learning", async (req, res) => {
+  try {
+    const { title, mode, event, deadline, tags, url, banner_image_url } = req.body;
+
+    // Validate required fields
+    if (!title || !mode || !event || !deadline || !url) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    // Validate event value
+    if (!["hackathon", "learning"].includes(event)) {
+      return res.status(400).json({ error: "Invalid event type" });
+    }
+
+    const result = await pool.query(
+      `INSERT INTO hackathon_learning 
+       (title, mode, event, deadline, tags, url, banner_image_url)
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
+       RETURNING *`,
+      [title, mode, event, deadline, JSON.stringify(tags || []), url, banner_image_url]
+    );
+
+    res.status(201).json(result.rows[0]);
+  } catch (err) {
+    console.error("POST /hackathon_learning error:", err.message);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+
 //GET request to fetch all jobs
 // ============================================
 // 📘 ROUTE: GET /job

@@ -80,13 +80,14 @@ const Internship = () => {
               title={internship.title}
               company={internship.company}
               duration={internship.duration || "Not specified"}
-              stipend={internship.salary || "Unpaid"}
+              stipend={internship.salary || "Not Disclosed"}
               logo={internship.logo || "/logos/default-logo.png"}
               type={internship.type || "Internship"}
               location={internship.location || "Remote"}
               postedDate={internship.posted_at}
               closingDate={internship.deadline}
-              postedOn={internship.source || "Portal"}
+              postedOn={internship.source || "Careers Page"}
+              url={internship.url}
             />
           ))
         ) : (

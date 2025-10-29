@@ -21,3 +21,20 @@ CREATE TABLE job (
     status opportunity_status DEFAULT 'active',
     url varchar(500) not null, --required
 );
+
+
+--create table for hackathons + learning
+CREATE TYPE event_mode AS ENUM ('In-Person', 'Online', 'Hybrid');
+CREATE TYPE event_type AS ENUM ('hackathon', 'learning');
+
+CREATE TABLE hackathon_learning (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    mode event_mode NOT NULL,
+    event event_type NOT NULL,
+    deadline DATE NOT NULL,
+    tags JSONB,
+    url VARCHAR(500) NOT NULL,
+    banner_image_url VARCHAR(500)
+);
+
