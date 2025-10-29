@@ -13,16 +13,16 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="pt-16"> 
-      <Navbar /> 
-    
+    <main className="pt-16">
+      <Navbar />
+
       <Hero />
 
       <Internship />
 
-      <Hackathons />
-
       <FullTimeOpenings />
+
+      <Hackathons />
 
       <LearningPrograms />
 
@@ -31,7 +31,6 @@ export default function Home() {
       <OurTeam />
 
       <Footer />
-      
     </main>
   );
 }

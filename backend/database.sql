@@ -11,7 +11,6 @@ CREATE TABLE job (
     title VARCHAR(255) NOT NULL, -- name of opportunity posted on employer site
     type opportunity_type NOT NULL, --required
     company VARCHAR(255) NOT NULL, --required
-    description TEXT,
     location VARCHAR(100),
     start_date DATE,
     end_date DATE,

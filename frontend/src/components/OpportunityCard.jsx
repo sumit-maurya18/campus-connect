@@ -1,11 +1,13 @@
 // components/OpportunityCard.jsx
+
+
 import React from 'react';
 import Link from 'next/link';
-import { Clock, DollarSign, MapPin, Briefcase, Calendar, Link as LinkIcon } from 'lucide-react'; // Added LinkIcon
+import { Clock, DollarSign, MapPin, Briefcase, Calendar, Link as LinkIcon } from 'lucide-react'; //LinkIcon
 
 const OpportunityCard = ({ 
     id, title, company, duration, stipend, logo, 
-    type, location, postedDate, closingDate, role, postedOn // <-- Added postedOn
+    type, location, postedDate, closingDate, role, postedOn //postedOn
 }) => {
     
     const hasStipend = stipend && stipend !== 'Unpaid' && stipend !== 'N/A';
@@ -16,7 +18,7 @@ const OpportunityCard = ({
     };
 
     return (
-        <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-4 
+        <div className="bg-gray-100 rounded-xl shadow-lg border border-gray-500 p-4 
                  transition duration-300 hover:shadow-2xl hover:scale-[1.01]">
             
             {/* Header/Logo Section */}
@@ -25,7 +27,7 @@ const OpportunityCard = ({
                     <h3 className="text-base font-bold text-gray-900 mb-1 leading-snug">{title}</h3>
                     <p className="text-xs text-gray-600 font-medium">{company}</p>
                 </div>
-                <div className="w-10 h-10 bg-gray-200 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-15 h-15 bg-gray-200 rounded-lg flex items-center justify-center flex-shrink-0">
                     <span className="text-xs text-gray-800 font-medium">Logo</span> 
                 </div>
             </div>
@@ -61,7 +63,7 @@ const OpportunityCard = ({
                 
                 {/* 5. Posted Date */}
                 <div className="flex items-center space-x-1 truncate" title={`Posted: ${formatDate(postedDate)}`}>
-                    <Calendar size={12} className="text-yellow-500 flex-shrink-0" />
+                    <Calendar size={12} className="text-orange-500 flex-shrink-0" />
                     <span><span className="font-semibold">{formatDate(postedDate)}</span></span>
                 </div>
                 
@@ -76,7 +78,7 @@ const OpportunityCard = ({
             <Link
                 href={linkPath}
                 className="block text-center py-2 bg-black text-white text-sm font-bold rounded-lg 
-                   hover:bg-gray-800 transition duration-200 mt-2"
+                   hover:bg-white hover:text-black transition duration-200 mt-2"
             >
                 Apply Now
             </Link>
