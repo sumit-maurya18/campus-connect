@@ -7,11 +7,10 @@ import { Clock, DollarSign, MapPin, Briefcase, Calendar, Link as LinkIcon } from
 
 const OpportunityCard = ({
     id, title, company, duration, stipend, logo,
-    type, location, postedDate, closingDate, role, postedOn //postedOn
+    type, location, postedDate, closingDate, role, postedOn, url //postedOn
 }) => {
 
     const hasStipend = stipend && stipend !== 'Unpaid' && stipend !== 'N/A';
-    const linkPath = `{url}`;
 
     const formatDate = (dateString) => {
         return dateString ? new Date(dateString).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : 'N/A';
@@ -76,7 +75,7 @@ const OpportunityCard = ({
 
             {/* Apply Button */}
             <Link
-                href={linkPath}
+                href={`${url}`}
                 className="block text-center w-full py-2 text-sm font-bold rounded-lg 
              bg-black text-white border border-black 
              hover:bg-white hover:text-black hover:border-gray-400 
