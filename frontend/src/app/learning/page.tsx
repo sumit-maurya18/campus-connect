@@ -1,9 +1,17 @@
+// pages/Internships.jsx
+import HackLearnPageTemplate from "../../components/HackLearnPageTemplate";
+import Navbar from "@/components/Navbar";
 
+const LearningsPage = () => {
+    return (
+        <div>
+            <Navbar />
+            <HackLearnPageTemplate
+            pageType="learning" // This tells the template which data to fetch
+            title="Learning Programs"
+            subtitle="Explore upcoming Learning Opportunities and enhance your skills."/>
+        </div>
+    );
+};
 
-export default function Home() {
-  return (
-    <div>
-        <h1>This is Learning page</h1>
-    </div>
-  );
-}
+export default LearningsPage;
