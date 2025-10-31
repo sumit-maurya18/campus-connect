@@ -2,7 +2,7 @@
 import OpportunityPageTemplate from "../../components/OpportunityPageTemplate";
 import Navbar from "@/components/Navbar";
 
-const InternshipsPage = () => {
+const JobsPage = () => {
     return (
         <div>
             <Navbar />
@@ -14,4 +14,4 @@ const InternshipsPage = () => {
     );
 };
 
-export default InternshipsPage;
+export default JobsPage;

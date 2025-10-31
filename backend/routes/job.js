@@ -67,34 +67,7 @@ router.post("/job", async (req, res) => {
 });
 
 
-router.post("/hackathon_learning", async (req, res) => {
-  try {
-    const { title, mode, event, deadline, tags, url, banner_image_url } = req.body;
 
-    // Validate required fields
-    if (!title || !mode || !event || !deadline || !url) {
-      return res.status(400).json({ error: "Missing required fields" });
-    }
-
-    // Validate event value
-    if (!["hackathon", "learning"].includes(event)) {
-      return res.status(400).json({ error: "Invalid event type" });
-    }
-
-    const result = await pool.query(
-      `INSERT INTO hackathon_learning 
-       (title, mode, event, deadline, tags, url, banner_image_url)
-       VALUES ($1, $2, $3, $4, $5, $6, $7)
-       RETURNING *`,
-      [title, mode, event, deadline, JSON.stringify(tags || []), url, banner_image_url]
-    );
-
-    res.status(201).json(result.rows[0]);
-  } catch (err) {
-    console.error("POST /hackathon_learning error:", err.message);
-    res.status(500).json({ error: "Server error" });
-  }
-});
 
 
 //GET request to fetch all jobs
@@ -253,6 +226,98 @@ router.get("/job", async (req, res) => {
 - The API uses prepared statements to prevent SQL injection.
 =========================================================
 */
+
+
+//Post logic for hackathon_learning
+
+router.post("/hackathon_learning", async (req, res) => {
+  try {
+    const { title, mode, event, deadline, tags, url, banner_image_url } = req.body;
+
+    // Validate required fields
+    if (!title || !mode || !event || !deadline || !url) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    // Validate event value
+    if (!["hackathon", "learning"].includes(event)) {
+      return res.status(400).json({ error: "Invalid event type" });
+    }
+
+    const result = await pool.query(
+      `INSERT INTO hackathon_learning 
+       (title, mode, event, deadline, tags, url, banner_image_url)
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
+       RETURNING *`,
+      [title, mode, event, deadline, JSON.stringify(tags || []), url, banner_image_url]
+    );
+
+    res.status(201).json(result.rows[0]);
+  } catch (err) {
+    console.error("POST /hackathon_learning error:", err.message);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+// =============================================
+// 📡 GET /hackathon_learning
+// =============================================
+// Fetches hackathons or learning events from the database
+// Supports filtering (by event type) and pagination (limit & page)
+// Example: /hackathon_learning?event=hackathon&limit=3&page=1
+// =============================================
+
+router.get("/hackathon_learning", async (req, res) => {
+  try {
+    // Extract query parameters from the request
+    // e.g. /hackathon_learning?event=hackathon&limit=3&page=2
+    const { event, limit, page } = req.query;
+
+    // Base SQL query
+    let query = "SELECT * FROM hackathon_learning";
+    const params = [];
+    const conditions = [];
+
+    // ✅ Filter: Event Type (hackathon | learning)
+    if (event) {
+      params.push(event);
+      conditions.push(`event = $${params.length}`); // $1 placeholder
+    }
+
+    // ✅ Apply WHERE conditions (if any)
+    if (conditions.length > 0) {
+      query += " WHERE " + conditions.join(" AND ");
+    }
+
+    // ✅ Sort: By nearest deadline first
+    query += " ORDER BY deadline ASC";
+
+    // ✅ Pagination
+    if (limit) {
+      const limitNum = parseInt(limit, 10);   // Number of records per page
+      const pageNum = parseInt(page, 10) || 1; // Default page = 1
+
+      // Add LIMIT clause
+      params.push(limitNum);
+      query += ` LIMIT $${params.length}`;    // e.g., LIMIT $2
+
+      // Add OFFSET clause
+      params.push(limitNum * (pageNum - 1));
+      query += ` OFFSET $${params.length}`;   // e.g., OFFSET $3
+    }
+
+    // ✅ Execute the SQL query
+    const result = await pool.query(query, params);
+
+    // ✅ Respond with JSON data
+    res.status(200).json(result.rows);
+
+  } catch (err) {
+    console.error("GET /hackathon_learning error:", err.message);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 
 
 

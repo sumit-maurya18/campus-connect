@@ -76,6 +76,8 @@ const OpportunityCard = ({
             {/* Apply Button */}
             <Link
                 href={`${url}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block text-center w-full py-2 text-sm font-bold rounded-lg 
              bg-black text-white border border-black 
              hover:bg-white hover:text-black hover:border-gray-400 
@@ -83,6 +85,8 @@ const OpportunityCard = ({
             >
                 Apply Now
             </Link>
+
+
 
         </div>
     );
