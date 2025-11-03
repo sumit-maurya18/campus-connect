@@ -7,7 +7,7 @@ const InternshipsPage = () => {
         <div>
             <Navbar />
             <OpportunityPageTemplate
-            pageType="internship" // This tells the template which data to fetch
+            pageType="Internship" // This tells the template which data to fetch
             title="Find Your Next Internship"
             subtitle="Explore opportunities to gain practical experience and enhance your skills."/>
         </div>

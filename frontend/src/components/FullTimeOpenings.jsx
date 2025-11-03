@@ -27,7 +27,7 @@ const Internship = () => {
   // ✅ Using the custom hook to fetch internships (limit = 3)
   //    This hook handles fetching, loading, and error states internally.
   const { data: jobs, loading, error } = useFetchOpportunities({
-    type: "job",
+    type: "Full-Time",
     limit: 3,
   });
 

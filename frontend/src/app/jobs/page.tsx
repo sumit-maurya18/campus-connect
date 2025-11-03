@@ -7,7 +7,7 @@ const JobsPage = () => {
         <div>
             <Navbar />
             <OpportunityPageTemplate
-            pageType="job" // This tells the template which data to fetch
+            pageType="Full-Time" // This tells the template which data to fetch
             title="Find Full Time Opportunities"
             subtitle="Explore opportunities to gain practical experience and enhance your skills."/>
         </div>
