@@ -114,7 +114,7 @@ const OpportunityPageTemplate = ({ pageType, title, subtitle }) => {
                             logo={opportunity.logo || "/logos/default-logo.png"}
 
                             // 🔗 Source Info
-                            postedOn={opportunity.source || "Company Careers Page"}
+                            postedOn={opportunity.posted_on || "Company Careers Page"}
 
                             // (Optional) Add extra fields if your API includes them
                             url={opportunity.url}

@@ -11,13 +11,12 @@ router.post("/job", async (req, res) => {
       type,
       company,
       location,
-      start_date,
-      end_date,
       salary,
-      deadline,
       tags,
       status,
       url,
+      duration,
+      posted_on
     } = req.body;
 
     // Validating required fields
@@ -34,37 +33,36 @@ router.post("/job", async (req, res) => {
         type,
         company,
         location,
-        start_date,
-        end_date,
         salary,
         posted_at,
-        deadline,
         tags,
         status,
-        url)
-        VALUES ($1,$2,$3,$4,$5,$6,$7,CURRENT_TIMESTAMP,$8,$9::jsonb,$10,$11)
+        url,
+        duration,
+        posted_on)
+        VALUES ($1,$2,$3,$4,$5,CURRENT_TIMESTAMP,$6::jsonb,$7,$8,$9,$10)
         RETURNING *`,
       [
         title,
         type,
         company,
         location || null,
-        start_date || null,
-        end_date || null,
         salary || null,
-        deadline || null,
-        JSON.stringify(tags || []), // convert tags array to JSONB
+        JSON.stringify(tags || {}), // json object
         opportunityStatus,
         url,
+        duration || null,
+        posted_on || null,
       ]
     );
 
-    res.status(201).json(newOpportunity.rows[0]); // returning inserted rows
-  } catch (err) {
-    console.error("POST /job error:", err.message);
-    res.status(500).json({ error: "Server error" });
+    res.status(201).json(newOpportunity.rows[0]);
+  } catch (error) {
+    console.error("Error creating job:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 
 
 
