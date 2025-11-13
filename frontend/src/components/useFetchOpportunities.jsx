@@ -36,7 +36,7 @@ const useFetchOpportunities = ({ type, limit = 3, page = 1 }) => {
         // Construct the backend URL dynamically
         // Example: /api/job?type=internship&limit=3&page=1
         const baseUrl =   process.env.NEXT_PUBLIC_URL;
-        const url = `${baseUrl}/job?type=${type}&limit=${limit}&page=${page}`;
+        const url = `${baseUrl}/api?type=${type}&limit=${limit}&page=${page}`;
 
 
         // Send HTTP GET request to the backend API

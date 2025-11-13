@@ -4,7 +4,7 @@ import pool from "../db.js"; // Adjust path as needed
 const router = express.Router();
 
 // POST route to add new opportunities
-router.post("/job", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const {
       title,
@@ -76,7 +76,7 @@ router.post("/job", async (req, res) => {
 // Importing necessary modules
 // Assuming 'router' and 'pool' (PostgreSQL connection pool) are already defined above.
 
-router.get("/job", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     // Extracting query parameters from the request URL
     // Example: /job?type=internship&status=open&limit=5&page=2
@@ -320,7 +320,7 @@ router.get("/hackathon_learning", async (req, res) => {
 
 
 // UPDATE a job by ID
-router.put("/job/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const {

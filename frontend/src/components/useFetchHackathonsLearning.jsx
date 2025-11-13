@@ -27,7 +27,7 @@ const useFetchHackathonsLearning = ({ event, limit = 3, page = 1 }) => {
         const baseUrl = process.env.NEXT_PUBLIC_URL;
         
         // ✅ Build URL dynamically — only add event if provided
-        let url = `${baseUrl}/hackathon_learning?limit=${limit}&page=${page}`;
+        let url = `${baseUrl}/api/hackathon_learning?limit=${limit}&page=${page}`;
         if (event) {
           url += `&event=${event}`;
         }
